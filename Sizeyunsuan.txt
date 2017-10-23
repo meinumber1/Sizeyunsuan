@@ -1,0 +1,144 @@
+
+ #include<stdio.h>
+ #include<Windows.h>
+ #include<time.h>
+ void main()
+  {
+      int a, b, c, d,i,m,n,x;
+      float p, q;
+      srand(unsigned( time(NULL)));  //为rand函数提供不同的种子使程序每次运行时产生不同的随机数
+	  printf("This program is used  to calculate the four operations within 100...... \n");
+      for (i = 0; i < 20; i++)
+     {
+		  
+         a = rand() % 100;           //随机产生小于100的非负整数
+         b = rand() % 100;   
+         c = rand() % 5;             //随机产生小于5的非负整数以控制switch跳转执行生成不同的四则运算式
+         switch (c)
+         {
+         case 0: printf("%d + %d =\n", a, b);            //加法
+ 			 scanf("%d",&x);
+			 if(x == (a+b))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+             break;
+         case 1:if (a < b)                                //减法
+         {
+                    d = a;
+                    a = b;
+                    b = d;
+         }
+                printf("%d - %d =\n", a, b);
+				scanf("%d",&x);
+				if(x == (a-b))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+
+                break;
+         case 2:printf("%d * %d =\n", a, b);             //乘法
+			    scanf("%d",&x);
+				if(x == (a*b))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+             break;
+         case 3:                                          //除法
+             while (b == 0)
+             {
+                 b = rand() % 1;                          //若b=0则重新生成b，直到b不为0
+             }
+             printf("%d / %d =\n", a, b);
+			 scanf("%d",&x);
+			 if(x == (a/b))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+             break;
+         case 4:
+             a = rand() % 100;
+             b = rand() % 100;
+             m = rand() % 100;
+             n = rand() % 100;
+             c = rand() %4 ;
+             while (b == 0)        //保证除数b!=0
+             {
+                 b = rand() % 100;
+             }
+             while (n == 0)        //保证除数n!=0
+             {
+                 n = rand() % 100;
+             }
+             if (a > b)            //使a<b
+            {
+                 d = a;
+                 a = b;
+                 b = d;
+             } 
+             if (m > n)            //使m<n
+             {
+                 d = m;
+                 m = n;
+                 n = d;
+             }
+             switch (c)
+             {
+             case 0:printf("%d/%d + %d/%d =\n", a, b, m, n);
+				    scanf("%d",&x);
+				    if(x == (a/b+m/n))
+				    	printf("You are right!\n");
+			     	else
+				       	printf("You are wrong!\n");
+                    break;
+             case 1:
+                 p = (float)a / (float)b;
+                 q = (float)m / (float)n;
+                 if (p < q)                 //交换p、q两者的值  
+                 {
+                     d = a;
+                     a = m;
+                     m = d;
+                     d = b;
+                     b = n;
+                     n = d;
+                 }
+                 printf("%d/%d - %d/%d =\n", a,b,m,n);
+                 scanf("%d",&x);
+				 if(x == (a/b-m/n))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+				 break;
+             case 2:printf("%d/%d * %d/%d =\n", a, b, m, n);
+				    scanf("%d",&x);
+					if(x == (a/b*m/n))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+                 break;
+             case 3:
+                 a = rand() % 100;
+                 b = rand() % 100;
+                 m = rand() % 100;
+                 n = rand() % 100;
+                 c = rand() % 4;
+                 while (m == 0)
+                 {
+                     m = rand() % 100;
+                 }
+                 printf("%d/%d / %d/%d =\n", a, b, m, n);
+				 scanf("%d",&x);
+				 if(x == (a/b/m/n))
+					printf("You are right!\n");
+				else
+					printf("You are wrong!\n");
+                 break;
+             }
+         }
+     }
+     system("pause");
+ }
+
+
+
